@@ -29,23 +29,29 @@ function playRound(playerSelection,compSelection){
     //structure to compare moves
     if(playerMove == 'rock'){
        if(compSelection == 'rock'){
+           alert('Draw');
            return 'Draw!';
        }
        else if(compSelection == 'paper'){
+           alert(loseMsg);
            return loseMsg;
        }
        else{
+           alert(winMsg);
            return winMsg;
        }
     }
     else if(playerMove == 'paper'){
         if(compSelection == 'paper'){
+            alert('Draw');
             return 'Draw!';
         }
         else if(compSelection == 'rock'){
+            alert(winMsg);
             return winMsg;
         }
         else{
+            alert(loseMsg);
             return loseMsg;
         }
 
@@ -53,12 +59,15 @@ function playRound(playerSelection,compSelection){
     else if(playerMove == 'scissors'){
 
         if(compSelection == 'scissors'){
+            alert('Draw');
             return 'Draw!';
         }
         else if(compSelection == 'rock'){
+            alert(loseMsg);
             return loseMsg;
         }
         else{
+            alert(winMsg);
             return winMsg;
         }
 
@@ -71,10 +80,41 @@ function playRound(playerSelection,compSelection){
 
 }
 
-const playerSelection = "paper";
-const computerSelection = computerPlay();
-console.log(playRound(playerSelection, computerSelection));
-console.log(computerSelection);
+function game(){
+    let playerScore = 0;
+    let compScore = 0;
+    let playerSelection;
+    let computerSelection; 
+    let result;
+    let winner;
+
+    for(let i = 0; i < 5; i++) {
+
+        playerSelection  = prompt("pick rock, paper, or scissors");
+        computerSelection = computerPlay();
+        result = playRound(playerSelection,computerSelection);
+        
+        if(result == `You Win! ${playerSelection} beats ${computerSelection}`) {
+            playerScore+=1;
+        }
+        else if(result == `You Lose! ${computerSelection} beats ${playerSelection}`){
+            compScore+=1;
+        };
+        console.log(result);
+        console.log(`player: ${playerScore} | computer ${compScore}`);
+       
+    }
+      if(playerScore>compScore){
+          winner="Human";
+      }
+      else{
+          winner="Computer";
+      }
+      console.log(`The winner is ${winner}`);
+}
+
+
+game();
 
 
 
