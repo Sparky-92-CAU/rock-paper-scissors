@@ -87,7 +87,7 @@ function game(){
     let computerSelection; 
     let result;
     let winner;
-
+    alert('Play five rounds to determine a winner');
     for(let i = 0; i < 5; i++) {
 
         playerSelection  = prompt("pick rock, paper, or scissors");
@@ -102,15 +102,17 @@ function game(){
         };
         console.log(result);
         console.log(`player: ${playerScore} | computer ${compScore}`);
-       
+        alert(`player: ${playerScore} | computer ${compScore}`)
     }
       if(playerScore>compScore){
           winner="Human";
       }
-      else{
+      else if(compScore>playerScore){
           winner="Computer";
       }
+      else{winner='.....No one! You tied'}
       console.log(`The winner is ${winner}`);
+      alert(`The winner is ${winner}`);
 }
 
 
