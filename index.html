@@ -4,11 +4,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../rock-paper-scissors/script.js"></script>
+    <!---<script src="../rock-paper-scissors/script.js"></script>--->
     <link rel="stylesheet" href="../rock-paper-scissors/style.css">
     <title>Document</title>
 </head>
 <body>
+
+    <div class = "rock">
+        <button id="rock">rock</button>
+    </div>
+
+    <div class = "paper">
+        <button id = "paper">paper</button>
+    </div>
+
+    <div class = "scissors">
+        <button id="scissors">scissors</button>
+    </div>
+
+    <script>
+
+
+function userPlay(){
+
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+
+
+
+rock.addEventListener("click",function (e)
+ {
+  let choice=e.target.id;
+  alertChoice(choice);
+});
+
+paper.addEventListener("click",function (e) 
+{
+  let choice=e.target.id;
+  alertChoice(choice);
+ 
+});
+
+scissors.addEventListener("click", function (e) {
+  let choice=e.target.id;
+  alertChoice(choice);
+ 
+});
+};
+
+function alertChoice(choice){
+    alert(choice);
+};
+
+
+
+userPlay();
+
+
+    </script>
     
 </body>
 </html>
