@@ -23,31 +23,35 @@ function userPlay(){
   const rock = document.querySelector("#rock");
   const paper = document.querySelector("#paper");
   const scissors = document.querySelector("#scissors");
-  
+  let result;
   
   //when one is clicked, call compare() to determine winner
   rock.addEventListener("click",function (e)
    {
     let choice=e.target.id;
-    console.log(compareMoves(computerPlay(),choice));
+    let result =(compareMoves(computerPlay(),choice));
+    scoreKeeper(result);
     
   });
   
   paper.addEventListener("click",function (e) 
   {
     let choice=e.target.id;
-    console.log(compareMoves(computerPlay(),choice));
+    let result =(compareMoves(computerPlay(),choice));
+    scoreKeeper(result);
     
    
   });
   
   scissors.addEventListener("click", function (e) {
     let choice=e.target.id;
-    console.log(compareMoves(computerPlay(),choice));
+    let result = (compareMoves(computerPlay(),choice));
+    scoreKeeper(result);
     
    
   });
-  };
+  
+};
 
 function compareMoves(compSelection,playerSelection)
   
@@ -104,8 +108,30 @@ else if(playerSelection == 'scissors'){
 
 }
 
+function scoreKeeper(result){
+  //need to add node right after cooressponding header for who won 
+  const playerScoreContainer = document.querySelector(".playerScore");
+  const playerScore = document.createElement("div");
+  playerScore.textContent = 0;
+  playerScoreContainer.appendChild(playerScore);
 
-userPlay();
+  if (result=="win"){
+       console.log("player");
+     
+  }
+  else if(result=="lose"){
+       console.log("computer");
+  }
+  else{
+       console.log("draw");
+  }
+ 
+}
+
+ 
+ userPlay();
+
+
 
 
  

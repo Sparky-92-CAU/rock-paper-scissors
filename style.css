@@ -16,4 +16,15 @@
 .playerScore .computerScore{
     display:flex;
     justify-content: space-around;
+    flex-direction: row;
 }
+
+.playerScore > div{
+    font-size: xx-large;
+   
+}
+
+.computerScore > div{
+    font-size: xx-large;
+}
+
