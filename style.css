@@ -1,7 +1,28 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    
+    display: flex;
+    flex-direction: column;
+    
+}
+
+header{
+    display: flex;
+    justify-content: center;
+    padding: 40px 0px;
+    font-size: 64px;
+  
+}
+.heading{
+    align-self: center;
+}
+
+
 .playerMove{
     display: flex;
     flex-direction: row;
-    margin: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     justify-content: space-evenly;
     
 }
@@ -9,22 +30,45 @@
     display:flex;
     flex-direction: row;
     justify-content: space-evenly;
+    border-style:solid;
+    margin-left: 10%;
+    margin-right: 10%;
+    
+    
     
    
 }
 
-.playerScore .computerScore{
-    display:flex;
-    justify-content: space-around;
+.currentSelections{
+    display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
+    margin-bottom: 5%;
 }
 
-.playerScore > div{
-    font-size: xx-large;
-   
+.playerSelection>h2{
+    padding-left: 25%;
+    
 }
 
-.computerScore > div{
-    font-size: xx-large;
+.computerSelection>h2{
+    padding-left: 25%;
 }
+
+
+.score{
+    padding-left: 45%;
+}
+
+button>img{
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.grow { 
+    transition: all .2s ease-in-out; 
+    }
+.grow:hover { 
+    transform: scale(1.1); 
+    }
 

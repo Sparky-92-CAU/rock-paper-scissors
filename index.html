@@ -4,35 +4,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <script src="../rock-paper-scissors/test.js" defer></script>
+   <script src="../rock-paper-scissors/rps.js" defer></script>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../rock-paper-scissors/style.css">
-    <title>Document</title>
+    <title>Rock, Paper, Scissors</title>
 </head>
 <body>
-
+    <header >Rock | Paper | Scissors</header>
+    <h1 class="heading">Make a Selection: First to 5 Wins!</h1>
     <div class = "playerMove">
-        <button id="rock">rock</button>
+       
+        <button class="grow" id="rock"><img id="rock" src="../rock-paper-scissors/assets/rock.jpg"></button>
    
 
     
-        <button id = "paper">paper</button>
+        <button class="grow" id = "paper"><img id="paper"src="../rock-paper-scissors/assets/paper.jpg"></button>
     
 
     
-        <button id="scissors">scissors</button>
+        <button class="grow" id="scissors"><img id="scissors" src="../rock-paper-scissors/assets/scissors.jpg"></button>
+    </div>
+
+    <div class="currentSelections">
+        <div class="playerSelection"><h1>Player Choice:</h1></div>
+        <div class="computerSelection"><h1>Computer Choice:</h1></div>
+
     </div>
 
 
     <div class="scoreboard">
         <div class ="playerScore">
-             <h1>Player Score: </h1>
+             <h1>Player Score </h1>
+             
         </div>
-
+        <div class ="tie">
+            <h1>Tie </h1>
+            
+       </div>
         <div class ="computerScore">
-            <h1>Computer Score: </h1>
+            <h1>Computer Score </h1>
         </div>
 
-
+       
     </div>
 
    
