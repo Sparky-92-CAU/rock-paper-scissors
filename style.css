@@ -10,7 +10,8 @@ header{
     display: flex;
     justify-content: center;
     padding: 40px 0px;
-    font-size: 64px;
+    font-size: 44px;
+    flex-shrink: 2;
   
 }
 .heading{
@@ -22,8 +23,10 @@ header{
     display: flex;
     flex-direction: row;
     margin-top: 5%;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
     justify-content: space-evenly;
+    flex-shrink: 2;
+    flex-wrap: wrap;
     
 }
 .scoreboard{
@@ -33,7 +36,8 @@ header{
     border-style:solid;
     margin-left: 10%;
     margin-right: 10%;
-    
+    flex-shrink:2 ;
+    flex-wrap: wrap;
     
     
    
