@@ -76,3 +76,20 @@ button>img{
     transform: scale(1.1); 
     }
 
+.win {
+    
+    max-width: 500px;
+    display: flex;
+    align-self: center;
+    margin-top: 20px;
+}
+.lose{
+   
+    max-width: 500px;
+    display: flex;
+    align-self: center;
+    margin-top: 20px;
+}
+
+
+
