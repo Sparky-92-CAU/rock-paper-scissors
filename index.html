@@ -1,68 +1,100 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <script src="rps.js" defer></script>
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <title>Rock, Paper, Scissors</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101b2b">
+  <title>Rock Paper Scissors | Clark Urbon</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="rps.js" defer></script>
 </head>
 <body>
-    <header>Rock | Paper | Scissors</header>
-    <main>
-    <a class="home-link" href="https://sparky-92-cau.github.io/portfolio/">Back to Home</a>
-    <h1 class="heading">Make a Selection: First to 5 Wins!</h1>
+  <header class="site-header">
+    <a class="back-link" href="https://sparky-92-cau.github.io/portfolio/">
+      <span aria-hidden="true">←</span> Back to portfolio
+    </a>
+    <span class="header-label">CLARK URBON <span aria-hidden="true">/</span> ARCADE</span>
+  </header>
 
-    <section class="scoreboard" aria-label="Scoreboard">
-        <div class ="playerScore">
-             <h2>Player Score</h2>
-             
+  <main class="game-shell">
+    <section class="intro">
+      <p class="eyebrow">THE CLASSIC MATCHUP</p>
+      <h1>Rock <span>paper</span> scissors.</h1>
+      <p>Choose your move. First to five wins the match.</p>
+    </section>
+
+    <section class="game-panel" aria-label="Rock Paper Scissors game">
+      <div class="match-heading">
+        <div>
+          <p class="eyebrow">MATCH STATUS</p>
+          <h2 id="round-number">ROUND 1</h2>
         </div>
-        <div class ="tie">
-            <h2>Tie</h2>
-            
-       </div>
-        <div class ="computerScore">
-            <h2>Computer Score</h2>
+        <span class="match-rule">FIRST TO 5</span>
+      </div>
+
+      <section class="scoreboard" aria-label="Scoreboard">
+        <div class="score-card score-player">
+          <span class="score-label">YOU</span>
+          <strong id="player-score">0</strong>
+          <span class="score-caption">PLAYER</span>
         </div>
-        
-       
-    </section>
+        <div class="draw-score">
+          <span class="score-label">DRAWS</span>
+          <strong id="tie-score">0</strong>
+        </div>
+        <div class="score-card score-computer">
+          <span class="score-label">COMPUTER</span>
+          <strong id="computer-score">0</strong>
+          <span class="score-caption">OPPONENT</span>
+        </div>
+      </section>
 
-    <div class="win" role="status" aria-live="polite">
-       
+      <div class="round-result" data-outcome="ready" role="status" aria-live="polite">
+        <span id="result-label">READY?</span>
+        <p id="result-message">Pick a move to play your first round.</p>
       </div>
-      <div class="lose" role="status" aria-live="polite">
-        
-      </div>
-     
-    <section class="playerMove" aria-label="Choose your move">
-       
-        <button class="grow" id="rock" type="button" aria-label="Choose rock"><img src="assets/rock.jpg" alt="Rock"></button>
-   
 
-    
-        <button class="grow" id="paper" type="button" aria-label="Choose paper"><img src="assets/paper.jpg" alt="Paper"></button>
-    
+      <section class="duel-board" aria-label="Latest round">
+        <div class="duel-choice">
+          <span class="duel-label">YOUR MOVE</span>
+          <span id="player-placeholder" class="choice-placeholder" aria-hidden="true">?</span>
+          <img id="player-image" class="duel-image" alt="" hidden>
+          <strong id="player-choice">Waiting for you</strong>
+        </div>
+        <span class="versus" aria-hidden="true">VS</span>
+        <div class="duel-choice">
+          <span class="duel-label">COMPUTER'S MOVE</span>
+          <span id="computer-placeholder" class="choice-placeholder" aria-hidden="true">?</span>
+          <img id="computer-image" class="duel-image" alt="" hidden>
+          <strong id="computer-choice">Ready when you are</strong>
+        </div>
+      </section>
 
-    
-        <button class="grow" id="scissors" type="button" aria-label="Choose scissors"><img src="assets/scissors.jpg" alt="Scissors"></button>
+      <section class="move-section" aria-labelledby="move-heading">
+        <div class="move-heading">
+          <h2 id="move-heading">Make your move</h2>
+          <p>Or use <kbd>R</kbd>, <kbd>P</kbd>, or <kbd>S</kbd></p>
+        </div>
+        <div class="move-buttons">
+          <button class="move-button" type="button" data-choice="rock" aria-label="Choose rock, shortcut R">
+            <img src="assets/rock.jpg" alt="" loading="eager">
+            <span>Rock <kbd>R</kbd></span>
+          </button>
+          <button class="move-button" type="button" data-choice="paper" aria-label="Choose paper, shortcut P">
+            <img src="assets/paper.jpg" alt="" loading="eager">
+            <span>Paper <kbd>P</kbd></span>
+          </button>
+          <button class="move-button" type="button" data-choice="scissors" aria-label="Choose scissors, shortcut S">
+            <img src="assets/scissors.jpg" alt="" loading="eager">
+            <span>Scissors <kbd>S</kbd></span>
+          </button>
+        </div>
+      </section>
+
+      <button id="play-again" class="play-again" type="button" hidden>Play again</button>
     </section>
+  </main>
 
-    <section class="currentSelections" aria-live="polite">
-        <div class="playerSelection"><h2>Player Choice:</h2></div>
-        <div class="computerSelection"><h2>Computer Choice:</h2></div>
-
-    </section>
-    </main>
-
-
-     <!--Bootstrap Javascript-->
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+  <footer class="site-footer">A little strategy. A little luck.</footer>
 </body>
 </html>

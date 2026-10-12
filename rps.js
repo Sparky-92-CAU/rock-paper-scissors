@@ -1,214 +1,164 @@
-//get DOM references, initialize global variables
-const rock = document.querySelector("#rock");
-const paper = document.querySelector("#paper");
-const scissors = document.querySelector("#scissors");
-const playerChoiceContainer = document.querySelector(".playerSelection");
-const computerChoiceContainer = document.querySelector(".computerSelection");
-const playerScoreContainer = document.querySelector(".playerScore");
-const computerScoreContainer = document.querySelector(".computerScore");
-const tieContainer = document.querySelector(".tie");
-const playerScore = document.createElement("h1");
-const computerScore = document.createElement("h1");
-const tie = document.createElement("h1");
-const playerChoice = document.createElement("h2");
-const computerChoice = document.createElement('h2');
-const winAlertContainer = document.querySelector(".win");
-const loseAlertContainer = document.querySelector(".lose");
-const winAlert = document.createElement('h1');
-const loseAlert = document.createElement('h1');
-winAlert.textContent="You Win!";
-loseAlert.textContent="You Lose!";
-playerChoice.textContent = "";
-computerChoice.textContent = "";
-playerScore.classList.add('score');
-computerScore.classList.add('score');
-tie.classList.add('score');
-playerScore.textContent = 0;
-computerScore.textContent = 0;
-tie.textContent = 0;
-playerScoreContainer.appendChild(playerScore);
-computerScoreContainer.appendChild(computerScore);
-tieContainer.appendChild(tie);
-playerChoiceContainer.appendChild(playerChoice);
-computerChoiceContainer.appendChild(computerChoice);
-var win = new Audio('assets/win.mp3');
-var lose = new Audio('assets/lose.mp3');
+const choices = ['rock', 'paper', 'scissors'];
+const beats = {
+    rock: 'scissors',
+    paper: 'rock',
+    scissors: 'paper'
+};
+const shortcuts = {
+    r: 'rock',
+    p: 'paper',
+    s: 'scissors'
+};
 
+const scoreElements = {
+    player: document.querySelector('#player-score'),
+    computer: document.querySelector('#computer-score'),
+    draws: document.querySelector('#tie-score')
+};
+const roundNumber = document.querySelector('#round-number');
+const resultPanel = document.querySelector('.round-result');
+const resultLabel = document.querySelector('#result-label');
+const resultMessage = document.querySelector('#result-message');
+const playerChoice = document.querySelector('#player-choice');
+const computerChoice = document.querySelector('#computer-choice');
+const playerImage = document.querySelector('#player-image');
+const computerImage = document.querySelector('#computer-image');
+const playerPlaceholder = document.querySelector('#player-placeholder');
+const computerPlaceholder = document.querySelector('#computer-placeholder');
+const moveButtons = document.querySelectorAll('.move-button');
+const playAgainButton = document.querySelector('#play-again');
+const winSound = new Audio('assets/win.mp3');
+const loseSound = new Audio('assets/lose.mp3');
 
+const scores = { player: 0, computer: 0, draws: 0 };
+let roundsPlayed = 0;
+let matchFinished = false;
 
-/**alert alert-danger
-alert alert-success**/
-
-
-//event listeners that call gamePlay when button clicked
-rock.addEventListener("click",function ()
-   {
-  let choice='rock';
-    console.log(choice);
-    gamePlay(choice);
-    checkGame();
-    
-  });
-//paper event listenr
-  paper.addEventListener("click",function ()
-  {
-   let choice='paper';
-   console.log(choice);
-   gamePlay(choice);
-   checkGame();
-   
- });
-//rock event listern
- scissors.addEventListener("click",function ()
-   {
-    let choice='scissors';
-    console.log(choice);
-    gamePlay(choice);
-    checkGame();
-    
-  });
-
-
-//function to drive gameplay
-  function gamePlay(userSelection){
-
-    let compSelection = computerPlay();
-    let winner= compareMoves(compSelection,userSelection);
-    playerChoice.textContent = userSelection;
-    computerChoice.textContent=compSelection;
-    
-    
-    if(winner=="player"){
-        playerScore.textContent++;
-        
-    }
-    else if(winner=="computer"){
-        computerScore.textContent++;
-    }
-    else{tie.textContent++;};
-    
-    
-    
-
-  };
-
-
-
-
-//returns a random selection(rock, paper, or scissors) for computer
-function computerPlay(){
-    
-    
-    let move = Math.floor(Math.random() * 3) + 1;
-  
-    if(move==3){
-        return "rock";
-    }
-    else if(move==2){
-        return "paper";
-    }
-    else{
-        return "scissors";
-    }
-  }
-
-
-// takes in to selections and returns winner
-function compareMoves(compSelection,playerSelection)
-  
-{
-
-
-
-//structure to compare moves
-if(playerSelection == 'rock'){
-   if(compSelection == 'rock'){
-       
-       return 'draw';
-   }
-   else if(compSelection == 'paper'){
-       
-       return 'computer';
-   }
-   else{
-       
-       return 'player';
-   }
-}
-else if(playerSelection == 'paper'){
-    if(compSelection == 'paper'){
-        
-        return 'draw';
-    }
-    else if(compSelection == 'rock'){
-        
-        return 'player';
-    }
-    else{
-        
-        return 'computer';
-    }
-
-}
-else if(playerSelection == 'scissors'){
-
-    if(compSelection == 'scissors'){
-        
-        return 'draw';
-    }
-    else if(compSelection == 'rock'){
-        
-        return 'computer';
-    }
-    else{
-        
-        return 'player';
-    }
-
+function formatChoice(choice) {
+    return choice.charAt(0).toUpperCase() + choice.slice(1);
 }
 
+function computerPlay() {
+    return choices[Math.floor(Math.random() * choices.length)];
 }
 
+function compareMoves(playerMove, computerMove) {
+    if (playerMove === computerMove) {
+        return 'draws';
+    }
 
-function checkGame(){
-
-    if(playerScore.textContent==5 || computerScore.textContent == 5){
-        if(playerScore.textContent==5){
-            winAlert.textContent="You Win!";
-            winAlert.classList.add("alert");
-            winAlert.classList.add("alert-success");
-            winAlert.classList.add("justify-content-lg-center");
-            winAlertContainer.appendChild(winAlert);
-            win.play();
-            resetScores();
-            
-        }
-        else{
-            loseAlert.textContent="You Lose!";
-            loseAlert.classList.add("alert");
-            loseAlert.classList.add("alert-danger");
-            loseAlert.classList.add("justify-content-lg-center");
-            loseAlertContainer.appendChild(loseAlert);
-            lose.play();
-            resetScores();
-        }
-    };
-    if((playerScore.textContent==1 && computerScore.textContent == 0 && tie.textContent == 0)|| 
-        (playerScore.textContent==0 && computerScore.textContent == 1 && tie.textContent == 0) || 
-        (playerScore.textContent==0 && computerScore.textContent == 0 && tie.textContent == 1)){
-         
-            winAlert.classList.remove("alert");
-            winAlert.classList.remove("alert-success");
-            winAlert.textContent="";
-            loseAlert.textContent="";
-            loseAlert.classList.remove("alert");
-            loseAlert.classList.remove("alert-danger");
-        }
-
-        function resetScores() {
-            playerScore.textContent = '0';
-            computerScore.textContent = '0';
-            tie.textContent = '0';
-        }
-
+    return beats[playerMove] === computerMove ? 'player' : 'computer';
 }
+
+function showChoice(choice, nameElement, imageElement, placeholderElement) {
+    nameElement.textContent = formatChoice(choice);
+    imageElement.src = `assets/${choice}.jpg`;
+    imageElement.alt = formatChoice(choice);
+    imageElement.hidden = false;
+    placeholderElement.hidden = true;
+}
+
+function renderScores() {
+    scoreElements.player.textContent = scores.player;
+    scoreElements.computer.textContent = scores.computer;
+    scoreElements.draws.textContent = scores.draws;
+}
+
+function setResult(outcome, label, message) {
+    resultPanel.dataset.outcome = outcome;
+    resultLabel.textContent = label;
+    resultMessage.textContent = message;
+}
+
+function finishMatch(winner, roundMessage) {
+    matchFinished = true;
+    moveButtons.forEach(button => {
+        button.disabled = true;
+    });
+
+    playAgainButton.hidden = false;
+    roundNumber.textContent = `MATCH COMPLETE · ROUND ${roundsPlayed}`;
+
+    if (winner === 'player') {
+        setResult('win', 'MATCH WON', `${roundMessage} You win the match!`);
+        winSound.play();
+    } else {
+        setResult('loss', 'MATCH LOST', `${roundMessage} The computer wins the match.`);
+        loseSound.play();
+    }
+}
+
+function playRound(playerMove) {
+    if (matchFinished) {
+        return;
+    }
+
+    const computerMove = computerPlay();
+    const outcome = compareMoves(playerMove, computerMove);
+    const playerText = formatChoice(playerMove);
+    const computerText = formatChoice(computerMove);
+    roundsPlayed++;
+
+    showChoice(playerMove, playerChoice, playerImage, playerPlaceholder);
+    showChoice(computerMove, computerChoice, computerImage, computerPlaceholder);
+
+    if (outcome === 'draws') {
+        scores.draws++;
+    } else {
+        scores[outcome]++;
+    }
+    renderScores();
+
+    const roundMessage = outcome === 'draws'
+        ? `${playerText} meets ${computerText}. No points this round.`
+        : outcome === 'player'
+            ? `${playerText} beats ${computerText}. You take the round.`
+            : `${computerText} beats ${playerText}. The computer takes the round.`;
+
+    if (scores.player === 5 || scores.computer === 5) {
+        finishMatch(scores.player === 5 ? 'player' : 'computer', roundMessage);
+        return;
+    }
+
+    roundNumber.textContent = `ROUND ${roundsPlayed + 1}`;
+    setResult(outcome === 'draws' ? 'draw' : outcome, outcome.toUpperCase(), roundMessage);
+}
+
+function resetMatch() {
+    scores.player = 0;
+    scores.computer = 0;
+    scores.draws = 0;
+    roundsPlayed = 0;
+    matchFinished = false;
+
+    renderScores();
+    roundNumber.textContent = 'ROUND 1';
+    playerChoice.textContent = 'Waiting for you';
+    computerChoice.textContent = 'Ready when you are';
+    playerImage.hidden = true;
+    computerImage.hidden = true;
+    playerPlaceholder.hidden = false;
+    computerPlaceholder.hidden = false;
+    playAgainButton.hidden = true;
+    moveButtons.forEach(button => {
+        button.disabled = false;
+    });
+    setResult('ready', 'READY?', 'Pick a move to play your first round.');
+}
+
+moveButtons.forEach(button => {
+    button.addEventListener('click', () => playRound(button.dataset.choice));
+});
+
+document.addEventListener('keydown', event => {
+    if (event.altKey || event.ctrlKey || event.metaKey) {
+        return;
+    }
+
+    const choice = shortcuts[event.key.toLowerCase()];
+    if (choice) {
+        playRound(choice);
+    }
+});
+
+playAgainButton.addEventListener('click', resetMatch);
