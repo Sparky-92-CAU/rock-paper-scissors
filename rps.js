@@ -31,8 +31,8 @@ computerScoreContainer.appendChild(computerScore);
 tieContainer.appendChild(tie);
 playerChoiceContainer.appendChild(playerChoice);
 computerChoiceContainer.appendChild(computerChoice);
-var win = new Audio('../rock-paper-scissors/assets/win.mp3');
-var lose = new Audio('../rock-paper-scissors/assets/lose.mp3');
+var win = new Audio('assets/win.mp3');
+var lose = new Audio('assets/lose.mp3');
 
 
 
@@ -41,27 +41,27 @@ alert alert-success**/
 
 
 //event listeners that call gamePlay when button clicked
-rock.addEventListener("click",function (e)
+rock.addEventListener("click",function ()
    {
-    let choice=e.target.id;
+  let choice='rock';
     console.log(choice);
     gamePlay(choice);
     checkGame();
     
   });
 //paper event listenr
-  paper.addEventListener("click",function (e)
+  paper.addEventListener("click",function ()
   {
-   let choice=e.target.id;
+   let choice='paper';
    console.log(choice);
    gamePlay(choice);
    checkGame();
    
  });
 //rock event listern
- scissors.addEventListener("click",function (e)
+ scissors.addEventListener("click",function ()
    {
-    let choice=e.target.id;
+    let choice='scissors';
     console.log(choice);
     gamePlay(choice);
     checkGame();
@@ -180,9 +180,7 @@ function checkGame(){
             winAlert.classList.add("justify-content-lg-center");
             winAlertContainer.appendChild(winAlert);
             win.play();
-            playerScore.textContent=0;
-            computerScore.textContent=0;
-            tie.textContent=0;
+            resetScores();
             
         }
         else{
@@ -192,9 +190,7 @@ function checkGame(){
             loseAlert.classList.add("justify-content-lg-center");
             loseAlertContainer.appendChild(loseAlert);
             lose.play();
-            playerScore.textContent=0;
-            computerScore.textContent=0;
-            tie.textContent=0;
+            resetScores();
         }
     };
     if((playerScore.textContent==1 && computerScore.textContent == 0 && tie.textContent == 0)|| 
@@ -207,6 +203,12 @@ function checkGame(){
             loseAlert.textContent="";
             loseAlert.classList.remove("alert");
             loseAlert.classList.remove("alert-danger");
+        }
+
+        function resetScores() {
+            playerScore.textContent = '0';
+            computerScore.textContent = '0';
+            tie.textContent = '0';
         }
 
 }

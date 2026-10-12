@@ -4,68 +4,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <script src="../rock-paper-scissors/rps.js" defer></script>
+   <script src="rps.js" defer></script>
    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../rock-paper-scissors/style.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <title>Rock, Paper, Scissors</title>
 </head>
 <body>
-    <header >Rock | Paper | Scissors</header>
+    <header>Rock | Paper | Scissors</header>
+    <main>
+    <a class="home-link" href="https://sparky-92-cau.github.io/portfolio/">Back to Home</a>
     <h1 class="heading">Make a Selection: First to 5 Wins!</h1>
 
-    <div class="scoreboard">
+    <section class="scoreboard" aria-label="Scoreboard">
         <div class ="playerScore">
-             <h1>Player Score </h1>
+             <h2>Player Score</h2>
              
         </div>
         <div class ="tie">
-            <h1>Tie </h1>
+            <h2>Tie</h2>
             
        </div>
         <div class ="computerScore">
-            <h1>Computer Score </h1>
+            <h2>Computer Score</h2>
         </div>
         
        
-    </div>
+    </section>
 
-    <div class="win" role="alert">
+    <div class="win" role="status" aria-live="polite">
        
       </div>
-      <div class="lose" role="alert">
+      <div class="lose" role="status" aria-live="polite">
         
       </div>
      
-    <div class = "playerMove">
+    <section class="playerMove" aria-label="Choose your move">
        
-        <button class="grow" id="rock"><img id="rock" src="../rock-paper-scissors/assets/rock.jpg"></button>
+        <button class="grow" id="rock" type="button" aria-label="Choose rock"><img src="assets/rock.jpg" alt="Rock"></button>
    
 
     
-        <button class="grow" id = "paper"><img id="paper"src="../rock-paper-scissors/assets/paper.jpg"></button>
+        <button class="grow" id="paper" type="button" aria-label="Choose paper"><img src="assets/paper.jpg" alt="Paper"></button>
     
 
     
-        <button class="grow" id="scissors"><img id="scissors" src="../rock-paper-scissors/assets/scissors.jpg"></button>
-    </div>
+        <button class="grow" id="scissors" type="button" aria-label="Choose scissors"><img src="assets/scissors.jpg" alt="Scissors"></button>
+    </section>
 
-    <div class="currentSelections">
-        <div class="playerSelection"><h1>Player Choice:</h1></div>
-        <div class="computerSelection"><h1>Computer Choice:</h1></div>
+    <section class="currentSelections" aria-live="polite">
+        <div class="playerSelection"><h2>Player Choice:</h2></div>
+        <div class="computerSelection"><h2>Computer Choice:</h2></div>
 
-    </div>
+    </section>
+    </main>
 
 
      <!--Bootstrap Javascript-->
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script> 
-   
-
-    
-
-   
 </body>
 </html>

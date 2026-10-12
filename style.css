@@ -1,72 +1,80 @@
 body{
     font-family: 'Roboto', sans-serif;
-    
     display: flex;
     flex-direction: column;
-    
+    min-height: 100vh;
+    margin: 0;
+    color: #20242a;
 }
 
 header{
     display: flex;
     justify-content: center;
-    padding: 40px 0px;
-    font-size: 44px;
-    flex-shrink: 2;
-  
+    padding: clamp(1rem, 4vw, 2.5rem) 1rem;
+    font-size: clamp(1.75rem, 5vw, 2.75rem);
+    text-align: center;
+    background: #f1f3f5;
+}
+
+main {
+    width: min(100% - 2rem, 70rem);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.home-link {
+    display: inline-block;
+    margin: 0.5rem 0 1.25rem;
 }
 .heading{
-    align-self: center;
+    margin: 0 0 1.5rem;
+    font-size: clamp(1.25rem, 4vw, 2rem);
 }
 
 
 .playerMove{
     display: flex;
     flex-direction: row;
-    margin-top: 5%;
-    margin-bottom: 2%;
+    margin: 2rem 0;
     justify-content: space-evenly;
-    flex-shrink: 2;
     flex-wrap: wrap;
-    
+    gap: 1rem;
 }
 .scoreboard{
     display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    border-style:solid;
-    margin-left: 10%;
-    margin-right: 10%;
-    flex-shrink:2 ;
+    justify-content: space-around;
     flex-wrap: wrap;
-    
-    
-   
+    gap: 1rem;
+    padding: 1rem;
+    border: 1px solid #adb5bd;
+    border-radius: 0.75rem;
 }
 
 .currentSelections{
     display: flex;
-    flex-direction: row;
     justify-content: space-evenly;
-    margin-bottom: 5%;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
-
-.playerSelection>h2{
-    padding-left: 25%;
-    
-}
-
-.computerSelection>h2{
-    padding-left: 25%;
-}
-
 
 .score{
-    padding-left: 45%;
+    margin: 0.25rem;
 }
 
 button>img{
-    max-width: 200px;
+    display: block;
+    width: min(100%, 200px);
     max-height: 200px;
+    object-fit: contain;
+}
+
+.playerMove button {
+    padding: 0.5rem;
+    border: 1px solid #dee2e6;
+    border-radius: 0.75rem;
+    background: white;
+    cursor: pointer;
 }
 
 .grow { 
@@ -77,19 +85,30 @@ button>img{
     }
 
 .win {
-    
     max-width: 500px;
     display: flex;
     align-self: center;
-    margin-top: 20px;
+    justify-content: center;
+    margin-top: 1rem;
 }
 .lose{
-   
     max-width: 500px;
     display: flex;
     align-self: center;
-    margin-top: 20px;
+    justify-content: center;
+    margin-top: 1rem;
 }
 
+@media (max-width: 480px) {
+    .playerMove {
+        gap: 0.75rem;
+    }
 
+    .playerMove button {
+        width: min(28vw, 120px);
+    }
 
+    .currentSelections > div {
+        flex-basis: 100%;
+    }
+}
